@@ -25,7 +25,10 @@ abstract class AuthRepository {
 
       if (resp.data != null) {
         final parse = resp.data["data"];
-        return User(userId: parse["userId"]);
+        final userId = parse["userId"];
+        if (userId != null) {
+          return User(userId: userId);
+        }
       }
 
       return null;

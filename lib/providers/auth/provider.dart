@@ -12,13 +12,14 @@ class AuthProvider extends ChangeNotifier {
     this.error = false;
     super.notifyListeners();
 
-    final user = await AuthRepository.login(phone: phone, password: password);
-    if (user != null) {
-      this.user = user;
+    final newUser =
+        await AuthRepository.login(phone: phone, password: password);
+    if (newUser != null) {
+      this.user = newUser;
       this.loading = false;
     } else {
       this.loading = false;
-      this.error = false;
+      this.error = true;
     }
     notifyListeners();
 

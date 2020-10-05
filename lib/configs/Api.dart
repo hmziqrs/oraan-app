@@ -6,9 +6,4 @@ abstract class Api {
       baseUrl: "https://naya-oraan.herokuapp.com",
     ),
   );
-
-  // static init() {
-  //   instance = Dio();
-  //   instance.options.baseUrl = "https://naya-oraan.herokuapp.com";
-  // }
 }
