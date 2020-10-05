@@ -43,6 +43,11 @@ abstract class TextStyles {
   static TextStyle body3;
   static TextStyle body33;
 
+  static TextStyle body47;
+  static TextStyle body46;
+  static TextStyle body4;
+  static TextStyle body43;
+
   static init() {
     initHeadings();
     initBody();
@@ -160,6 +165,20 @@ abstract class TextStyles {
       fontWeight: FontWeight.w600,
     );
     body33 = body3.copyWith(
+      fontWeight: FontWeight.w300,
+    );
+
+    body4 = TextStyle(
+      fontSize: 5 + AppDimensions.ratio * 3.0,
+      fontWeight: FontWeight.w400,
+    );
+    body47 = body4.copyWith(
+      fontWeight: FontWeight.w700,
+    );
+    body46 = body4.copyWith(
+      fontWeight: FontWeight.w600,
+    );
+    body43 = body4.copyWith(
       fontWeight: FontWeight.w300,
     );
   }

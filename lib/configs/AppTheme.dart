@@ -19,6 +19,7 @@ class AppTheme {
   static final TinyColor light = TinyColor.fromString('#fdfdfd');
 
   static final Color primary = theme.primary;
+  static final Color accent = theme.accent;
 
   static final Color text = theme.accent;
   static final Color textSub = theme.accent.withOpacity(0.60);

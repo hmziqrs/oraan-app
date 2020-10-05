@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oraan/screens/HomeScreen/Home.dart';
 import 'package:oraan/screens/LoginScreen/LoginScreen.dart';
 import 'package:provider/provider.dart';
 
@@ -28,7 +29,7 @@ class AppNavigator extends StatelessWidget {
             darkTheme: theme.baseDark,
             themeMode: state.themeMode,
             // Routes
-            home: LoginScreen(),
+            home: HomeScreen(),
             // routes: <String, WidgetBuilder>{},
           );
         },
