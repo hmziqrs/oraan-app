@@ -12,8 +12,6 @@ import 'Dimensions.dart';
 import 'data.dart' as data;
 
 class HomeScreen extends StatelessWidget {
-  get assetName => null;
-
   @override
   Widget build(BuildContext context) {
     Dimensions.init(context);

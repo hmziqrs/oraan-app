@@ -8,7 +8,25 @@ import 'package:oraan/widgets/Screen/Screen.dart';
 
 import 'Dimensions.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
+  SplashScreen({@required this.loading});
+  final bool loading;
+
+  @override
+  _SplashScreenState createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void didUpdateWidget(covariant SplashScreen oldWidget) {
+    if (oldWidget.loading && !widget.loading) {
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+        Navigator.pushReplacementNamed(context, "login");
+      });
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
   @override
   Widget build(BuildContext context) {
     Dimensions.init(context);

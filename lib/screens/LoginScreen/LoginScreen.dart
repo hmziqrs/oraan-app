@@ -5,8 +5,10 @@ import 'package:oraan/configs/AppDimensions.dart';
 import 'package:oraan/configs/TextStyles.dart';
 import 'package:oraan/configs/AppTheme.dart';
 import 'package:oraan/UI.dart';
+import 'package:oraan/providers/auth/provider.dart';
 
 import 'package:oraan/widgets/Screen/Screen.dart';
+import 'package:provider/provider.dart';
 
 import 'Dimensions.dart';
 
@@ -17,26 +19,39 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   GlobalKey<FormState> fromKey = GlobalKey<FormState>();
+
+  String phone = ""; //"03452785722"
+  String password = ""; //"hasan@123"
   bool showPassword = false;
 
   void togglePassword() {
-    setState(
-      () {
-        this.showPassword = !this.showPassword;
-      },
-    );
+    setState(() {
+      this.showPassword = !this.showPassword;
+    });
   }
 
-  void validateForm() {
+  void submitForm() async {
     final isClean = this.fromKey.currentState.validate();
     if (isClean) {
-      // TODO submit
+      final freshState = await this.getAuth().login(
+            phone: this.phone,
+            password: this.password,
+          );
+
+      if (freshState.user != null) {
+        print(freshState.user.userId);
+        Navigator.pushReplacementNamed(context, "home");
+      }
     }
   }
+
+  AuthProvider getAuth([listen = false]) =>
+      Provider.of<AuthProvider>(context, listen: listen);
 
   @override
   Widget build(BuildContext context) {
     Dimensions.init(context);
+    final authState = this.getAuth(true);
 
     return Screen(
       child: Form(
@@ -83,6 +98,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     vertical: AppDimensions.padding * 1,
                   ),
                   child: TextFormField(
+                    initialValue: this.phone,
+                    onChanged: (str) {
+                      this.setState(() {
+                        this.phone = str;
+                      });
+                    },
                     keyboardType: TextInputType.emailAddress,
                     validator: ValidationBuilder().phone().build(),
                     cursorColor: AppTheme.text,
@@ -110,6 +131,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     vertical: AppDimensions.padding * 1,
                   ),
                   child: TextFormField(
+                    initialValue: this.password,
+                    onChanged: (str) {
+                      this.setState(() {
+                        this.password = str;
+                      });
+                    },
                     obscuringCharacter: "*",
                     validator: ValidationBuilder()
                         .minLength(1, "Password shouldn't be empty")
@@ -149,10 +176,22 @@ class _LoginScreenState extends State<LoginScreen> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),
-                  onPressed: () => this.validateForm(),
-                  child: Text(
-                    "LOGIN",
-                  ),
+                  onPressed: () =>
+                      !authState.loading ? this.submitForm() : null,
+                  child: authState.loading
+                      ? SizedBox(
+                          width: 20,
+                          height: 20,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 3.0,
+                            valueColor: AlwaysStoppedAnimation(
+                              Colors.white,
+                            ),
+                          ),
+                        )
+                      : Text(
+                          "LOGIN",
+                        ),
                 ),
                 SizedBox(height: AppDimensions.padding * 1),
                 InkWell(
@@ -165,7 +204,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text(
                       "FORGOT PASSCODE?",
                       style: TextStyles.body16.copyWith(
-                        color: AppTheme.primary,
+                        color: authState.loading
+                            ? AppTheme.textSub
+                            : AppTheme.primary,
                       ),
                     ),
                   ),
