@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pigment/pigment.dart';
 
 final primary = Pigment.fromString("#50C4CC");
-final background = Pigment.fromString('#f5eee6');
+final accent = Pigment.fromString("#2B4655");
 
 final darkBackground = Pigment.fromString('#1c1c1e');
 

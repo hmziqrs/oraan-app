@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oraan/screens/LoginScreen/LoginScreen.dart';
 import 'package:provider/provider.dart';
 
 import 'configs/theme.dart' as theme;
@@ -27,7 +28,7 @@ class AppNavigator extends StatelessWidget {
             darkTheme: theme.baseDark,
             themeMode: state.themeMode,
             // Routes
-            home: SplashScreen(),
+            home: LoginScreen(),
             // routes: <String, WidgetBuilder>{},
           );
         },

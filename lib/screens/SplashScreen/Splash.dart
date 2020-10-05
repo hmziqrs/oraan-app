@@ -14,10 +14,13 @@ class SplashScreen extends StatelessWidget {
     Dimensions.init(context);
 
     return Screen(
-      scaffoldBackgroundColor: AppTheme.primary.color,
+      scaffoldBackgroundColor: AppTheme.primary,
       child: Container(
         transform: Matrix4.identity()
-          ..translate(0.0, -Dimensions.logoWidth * 0.35),
+          ..translate(
+            0.0,
+            -Dimensions.logoWidth * 0.35,
+          ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oraan/configs/AppTheme.dart';
 
 class Screen extends StatelessWidget {
   Screen({
@@ -28,14 +29,22 @@ class Screen extends StatelessWidget {
       drawer: this.drawer,
       backgroundColor: this.scaffoldBackgroundColor ??
           Theme.of(context).scaffoldBackgroundColor,
-      body: Stack(
-        fit: StackFit.expand,
-        children: <Widget>[
-          this.belowBuilder != null ? this.belowBuilder(context) : Container(),
-          Positioned.fill(
-            child: child ?? builder(context),
-          ),
-        ],
+      body: DefaultTextStyle(
+        style: TextStyle(
+          color: AppTheme.text,
+          fontFamily: "Muli",
+        ),
+        child: Stack(
+          fit: StackFit.expand,
+          children: <Widget>[
+            this.belowBuilder != null
+                ? this.belowBuilder(context)
+                : Container(),
+            Positioned.fill(
+              child: child ?? builder(context),
+            ),
+          ],
+        ),
       ),
     );
   }
