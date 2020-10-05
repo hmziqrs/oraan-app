@@ -63,7 +63,7 @@ jobs:
         with:
           ACCESS_TOKEN: ${{ secrets.TOKEN }}
           BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: build/web # Th
+          FOLDER: app/build/web # Th
 
   android:
     name: Android
