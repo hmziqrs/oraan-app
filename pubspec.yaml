@@ -1,0 +1,67 @@
+name: oraan
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.7.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  supercharged: 1.10.0
+
+  emojis: 0.9.3
+  tinycolor: 1.0.3
+  flutter_icons: 1.1.0
+  simple_animations: 2.2.2
+
+  share: 0.6.5+2
+  open_url: 1.0.1
+  provider: 4.3.2+2
+  url_launcher: 5.4.1
+  universal_io: 1.0.1
+
+  admob_flutter: 0.3.4
+  firebase_core: 0.5.0
+  firebase_analytics: 6.0.0
+  firebase_performance: 0.4.0
+  firebase_crashlytics: 0.1.4+1
+
+  shared_preferences: 0.5.12
+
+dev_dependencies:
+  flutter_driver:
+    sdk: flutter
+  test: any
+  glob: 1.2.0
+  path: 1.8.0-nullsafety
+  translator: 0.1.4
+  intl_translation: 0.17.10
+  yaml: 2.2.1
+
+flutter_icons:
+  includes:
+    - mco
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/icons/
+
+  fonts:
+    - family: Muli
+      fonts:
+        - asset: fonts/Muli/Muli-Light.ttf
+          weight: 300
+        - asset: fonts/Muli/Muli-Regular.ttf
+          weight: 400
+        - asset: fonts/Muli/Muli-SemiBold.ttf
+          weight: 600
+        - asset: fonts/Muli/Muli-Bold.ttf
+          weight: 700
