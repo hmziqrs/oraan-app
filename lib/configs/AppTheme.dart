@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tinycolor/tinycolor.dart';
 
-import 'Theme.dart' as theme;
+import 'theme.dart' as theme;
 
 class AppTheme {
   static BuildContext ctx;

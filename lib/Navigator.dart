@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'configs/Theme.dart' as theme;
+import 'configs/theme.dart' as theme;
 
 import 'providers/AppProvider.dart';
 
