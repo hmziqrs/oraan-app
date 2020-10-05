@@ -1,6 +1,21 @@
 # oraan
 
-A new Flutter project.
+## Requirements to run locally
+
+- Flutter master channel & Framework • revision `e3c6979d1b`
+
+  - Run `flutter --version` to check it
+
+- Follow these step to use correct revision version
+  - Run `cd $FLUTTER_HOME` (where your flutter is installed)
+  - Run `git checkout master`
+  - Run `git checkout e3c6979d1b`
+- To enable desktop & web builds run the relevant command
+  - Run `flutter --enable-web`
+  - Run `flutter --enable-macos-desktop`
+  - Run `flutter --enable-linux-desktop`
+  - Run `flutter --enable-windows-desktop`
+- Run `flutter doctor` this command will show you what dependencies you need to install.
 
 ## Getting Started
 

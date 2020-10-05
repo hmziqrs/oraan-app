@@ -35,8 +35,8 @@ class LoginScreenChild extends StatefulWidget {
 class _LoginScreenChildState extends State<LoginScreenChild> {
   GlobalKey<FormState> fromKey = GlobalKey<FormState>();
 
-  String phone = "03452785722" ?? ""; //"03452785722"
-  String password = "hasan@123" ?? ""; //"hasan@123"
+  String phone = ""; //"03452785722"
+  String password = ""; //"hasan@123"
   bool showPassword = false;
 
   void togglePassword() {
