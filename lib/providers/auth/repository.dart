@@ -34,6 +34,31 @@ abstract class AuthRepository {
       return null;
     } catch (e) {
       print("Error $e");
+      return null;
+    }
+  }
+
+  static Future<double> getLifeSavings({int userId}) async {
+    try {
+      final resp = await Api.instance.get(
+        "/installment/get-by-userid",
+        queryParameters: {
+          "user_id": userId,
+        },
+      );
+
+      if (resp.data != null) {
+        final parse = resp.data["data"];
+        final savings = parse["lifeTimeSavings"];
+        if (savings != null) {
+          return double.parse(savings);
+        }
+      }
+
+      return null;
+    } catch (e) {
+      print("ERRRROR");
+      return null;
     }
   }
 }

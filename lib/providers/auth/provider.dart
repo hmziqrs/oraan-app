@@ -5,6 +5,9 @@ import 'package:oraan/providers/auth/repository.dart';
 class AuthProvider extends ChangeNotifier {
   bool loading = false;
   bool error = false;
+
+  bool initLifeSavings = false;
+
   User user;
 
   Future<AuthProvider> login({String phone, String password}) async {
@@ -23,6 +26,26 @@ class AuthProvider extends ChangeNotifier {
     }
     notifyListeners();
 
+    return this;
+  }
+
+  Future<AuthProvider> getLifeSavings() async {
+    this.initLifeSavings = true;
+    this.loading = true;
+    this.error = false;
+    super.notifyListeners();
+
+    final lifeSavings = await AuthRepository.getLifeSavings(
+      userId: this.user.userId,
+    );
+    if (lifeSavings != null) {
+      this.user.lifeSavings = lifeSavings;
+      this.loading = false;
+    } else {
+      this.loading = false;
+      this.error = true;
+    }
+    notifyListeners();
     return this;
   }
 }
